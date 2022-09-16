@@ -56,7 +56,7 @@ class HuffmanCoding:
         self.__buildCodesHelper(root.right, curr_bits + "1")
 
     def __buildCodes(self):
-        root = heapq.heappop(self.__heap)
+        root = heapq.heappop(self.__heap) if self.__heap else None
         self.__buildCodesHelper(root, "")
 
     def __getEncodedText(self, text):
@@ -155,10 +155,10 @@ class HuffmanCoding:
 
 s = input("Press 1 to compress a file. Press 0 to decompress a file.")
 if s == "1":
-    original_file_path = input("Enter the text file location (Make sure the loaction contains forward slashes. If there are backward slashes, convert them to forward slashes): ")
+    original_file_path = input("Enter the text file location: ")
     h = HuffmanCoding(original_file_path)
     h.compress()
 else:
-    inputFilePath = input("Enter location of the file to be decompressed (Make sure the loaction contains forward slashes. If there are backward slashes, convert them to forward slashes): ")
+    inputFilePath = input("Enter location of the file to be decompressed: ")
     h = HuffmanCoding()
     h.decompress(inputFilePath)
